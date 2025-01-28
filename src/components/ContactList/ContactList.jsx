@@ -8,9 +8,8 @@ function ContactList({ setSelectedContactID }) {
   const [contacts, setContacts] = useState([]);
 
   // display something if data fetch takes a while
-  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    // setLoading(true);
     // get the data
     axios('https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users')
       // return information is stored in array named data with other values
@@ -22,11 +21,14 @@ function ContactList({ setSelectedContactID }) {
         }
       })
       .catch((err) => console.log(err));
-    setLoading(false);
   }, []);
-  if (loading) {
-    return <h1>Just a second while we gather your data...</h1>;
-  }
+  //check if contacts has data, if not display a message
+  if (!contacts.length)
+    return (
+      <h1 style={{ fontSize: '100px' }}>
+        Just a second while we gather your data...
+      </h1>
+    );
 
   //regular function fetch version
 

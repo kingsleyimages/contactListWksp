@@ -11,12 +11,23 @@ function SelectedContact({ selectedContactID, setSelectedContactID }) {
       setContact(data.data);
     });
   }, []);
+  //check if contacts has data, if not display a message
+  if (!contact)
+    return (
+      <h1 style={{ fontSize: '100px' }}>
+        Just a second while we gather your data...
+      </h1>
+    );
+
   return (
     <div>
+      {/* get data and use ? to check if the data is available before trying to access it */}
       <h2>{contact?.name}</h2>
       <p>Company: {contact?.company?.name}</p>
       <p>
-        Address: {contact?.address?.street} {contact?.address?.suite}{' '}
+        Address: {contact?.address?.street} {contact?.address?.suite}
+        use braces to access the object properties or add spaces and punctuation
+        as needed
         {contact?.address?.city}
         {', '}
         {contact?.address?.zipcode}
