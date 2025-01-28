@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ContactRow from '../ContactRow/ContactRow';
-
+// import axios from 'axios'; - axios is a library that makes it easier to make requests to an API
 const dummyContacts = [
   { id: 1, name: 'R2-D2', phone: '222-222-2222', email: 'r2d2@droids.com' },
   { id: 2, name: 'C-3PO', phone: '333-333-3333', email: 'c3po@droids.com' },
@@ -16,12 +16,16 @@ function ContactList({ setSelectedContactID }) {
   useEffect(() => {
     setLoading(true);
     // get the data
+    // axios('https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users')
+    //   .then((data) => console.log(data))
+    //   .catch((err) => console.log(err));
+
     fetch('https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users')
       // convert the data to object
       .then((response) => response.json())
       // log the data and use setContacts to update the state
       .then((json) => {
-        // console.log(json);
+        console.log(json);
         setContacts(json);
       })
       .catch((err) => console.log(err));
