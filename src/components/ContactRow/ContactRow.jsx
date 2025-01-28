@@ -1,11 +1,16 @@
 import React from 'react';
+// output a row for each contact
 
-function ContactRow({ contact }) {
+// braces in the function declaration are to deconsturct the props object so we can use the properties directly
+function ContactRow({ setSelectedContactId, contact }) {
   return (
-    <tr>
+    <tr
+      onClick={() => {
+        setSelectedContactId(contact.id);
+      }}>
       <td>{contact.name}</td>
-      <td>{contact.phone}</td>
       <td>{contact.email}</td>
+      <td>{contact.phone}</td>
     </tr>
   );
 }
